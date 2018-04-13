@@ -1,0 +1,2 @@
+http://www.php-kurs.info/tutorial-php_klassen.html
+https://www.php-einfach.de/experte/php-codebeispiele/loginscript/angemeldet-bleiben/
