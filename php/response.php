@@ -3,7 +3,7 @@
 class Response {
 	private $responseSuccess;
 	private $responseError;
-	private $data;
+	public $data;
 
 	public function __construct() {
 		$this->responseSuccess['success'] = true;

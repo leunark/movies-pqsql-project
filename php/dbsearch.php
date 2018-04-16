@@ -19,23 +19,28 @@ if($mode==0){
     if(!$result){
         $response->JSONError("PQSQL Query Failure!");
     }
-    $movies;
+    $i = 0;
+    $movies = array(); // alt. $movies = array
     while ($row = pg_fetch_row($result)) {
-        $movies[$row[0]] = $row[1];
-        $response->addElement('movies',$movies);
+        $obj = (object) array('id' => $row[0], 'value' => $row[1]);
+        $movies[$i] = $obj;
+        $i++;
     }
+    $response->addElement('movies',$movies);
 
     $sql = "SELECT actor_id, name FROM actors";
     $result = pg_query($db, $sql);
     if(!$result){
         $response->JSONError("PQSQL Query Failure!");
     }
-
-    $actors;
+    $i = 0;
+    $actors = array();
     while ($row = pg_fetch_row($result)) {
-        $actors[$row[0]] = $row[1];
-        $response->addElement('actors',$actors);
+        $obj = (object) array('id' => $row[0], 'value' => $row[1]);
+        $actors[$i] = $obj;
+        $i++;
     }
+    $response->addElement('actors',$actors);
     
     $response->JSONSuccess("ok");
 }
